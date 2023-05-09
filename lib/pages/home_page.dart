@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:partyappui/animation/fade_animation.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -35,27 +34,32 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              FadeAnimation(1, const Text(
-                "Find the best parties near something.",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold),
-              ),),
+             Column(
+               crossAxisAlignment: CrossAxisAlignment.start,
+               children: [
+                 const SizedBox(height: 100),
+                 const Text(
+                   "Find the best \nparties near you.",
+                   style: TextStyle(
+                       color: Colors.yellow,
+                       fontSize: 30,
+                       fontWeight: FontWeight.bold),
+                 ),
+                 const SizedBox(height: 30),
+                 Text(
+                   "Lets us find you a party for your interest",
+                   style: TextStyle(
+                       color: Colors.green.shade400,
+                       fontSize: 25,
+                       fontWeight: FontWeight.bold),
+                 ),
+               ],
+             ),
 
-              const SizedBox(height: 30),
-              const Text(
-                "Lets us find you a party for your interest",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 25,
-                    fontWeight: FontWeight.w100),
-              ),
-              const SizedBox(height: 120),
               isLogin ? startButton() : googleButton(),
-              const SizedBox(height: 10),
+              // const SizedBox(height: 10),
             ],
           ),
         ),
@@ -80,18 +84,40 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget googleButton() {
-    return Container(
-      height: 55,
-      decoration: BoxDecoration(
-        color: Colors.red,
-        borderRadius: BorderRadius.circular(50),
-      ),
-      child: const Center(
-        child: Text(
-          "Google+",
-          style: TextStyle(color: Colors.white, fontSize: 18),
+    return Row(
+      children: [
+        Expanded(
+          child: Container(
+            height: 55,
+            decoration: BoxDecoration(
+              color: Colors.red,
+              borderRadius: BorderRadius.circular(50),
+            ),
+            child: const Center(
+              child: Text(
+                "Google",
+                style: TextStyle(color: Colors.white, fontSize: 18),
+              ),
+            ),
+          ),
         ),
-      ),
+        const SizedBox(width: 10),
+        Expanded(
+          child: Container(
+            height: 55,
+            decoration: BoxDecoration(
+              color: Colors.blue,
+              borderRadius: BorderRadius.circular(50),
+            ),
+            child: const Center(
+              child: Text(
+                "Facebook",
+                style: TextStyle(color: Colors.white, fontSize: 18),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
